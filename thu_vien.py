@@ -14,15 +14,9 @@ def connect_google(ten_json,sheet_id):
             st.secrets["gcp_service_account"],
             SCOPE
         )
-    except:
-        # Chạy trên Windows
-        json_path = os.path.join(
-            os.path.dirname(os.path.abspath(__file__)),
-            ten_json
-        )
-        creds = ServiceAccountCredentials.from_json_keyfile_name(
-            json_path,
-            SCOPE
-        )
+    except Exception as e:
+        import streamlit as st
+        st.error(f"Lỗi đọc secrets: {e}")
+        raise
     client = gspread.authorize(creds)
     return client.open_by_key(sheet_id)
