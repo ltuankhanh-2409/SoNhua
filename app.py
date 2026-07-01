@@ -70,7 +70,7 @@ with bangnhua_t:
             (df["MaHang"]== ma_hang)
         ]
         loc_trai = loc_trai[["TenKhuon","TrongLuong"]]
-         loc_phai = loc_trai.rename(columns={
+        loc_phai = loc_trai.rename(columns={
             "TenKhuon": "Tên Khuôn trái",
             "TrongLuong": "Trọng Lượng trái"
         })
@@ -88,7 +88,7 @@ with bangnhua_p:
             (df["MaHang"]== ma_hang)
         ]
         loc_phai = loc_phai[["TenKhuon","TrongLuong"]]
-        loc_phai = loc_trai.rename(columns={
+        loc_phai = loc_phai.rename(columns={
             "TenKhuon": "Tên Khuôn trái",
             "TrongLuong": "Trọng Lượng trái"
         })
