@@ -2,7 +2,7 @@ import os
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
-def connect_google(ten_json, sheet_id):
+def connect_google(sheet_id):
     import streamlit as st
 
     creds = ServiceAccountCredentials.from_json_keyfile_dict(
