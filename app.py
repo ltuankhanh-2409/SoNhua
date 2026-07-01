@@ -4,7 +4,7 @@ import pandas as pd
 
 
 
-dta=tv.connect_google("QlyKhuon.json","1ZGJ94U_I6iOb-ZInoZWTrHH4Ih7aA-ynlnrT8yR5yh8")
+dta=tv.connect_google("1ZGJ94U_I6iOb-ZInoZWTrHH4Ih7aA-ynlnrT8yR5yh8")
 #dta.sheet1.get_all_cells()
 # print(dta.sheet1)
 #  = ["cot 1","cột 2","cột 3","cột 4"]
