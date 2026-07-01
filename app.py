@@ -74,7 +74,7 @@ with bangnhua_t:
             "TenKhuon": "Tên Khuôn trái",
             "TrongLuong": "Trọng Lượng trái"
         })
-        st.dataframe(loc_trai,,hide_index=True,use_container_width=True)
+        st.dataframe(loc_trai,hide_index=True,use_container_width=True)
 with bangnhua_p:
     if  len(record) > 0:
         df = pd.DataFrame(record)
@@ -92,7 +92,7 @@ with bangnhua_p:
             "TenKhuon": "Tên Khuôn trái",
             "TrongLuong": "Trọng Lượng trái"
         })
-        st.dataframe(loc_phai,,hide_index=True,use_container_width=True)
+        st.dataframe(loc_phai,hide_index=True,use_container_width=True)
 
 # Đoạn code lấy thông tin từ Dataframe lên form nhập
 
