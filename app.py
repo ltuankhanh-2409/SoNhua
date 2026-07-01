@@ -70,7 +70,11 @@ with bangnhua_t:
             (df["MaHang"]== ma_hang)
         ]
         loc_trai = loc_trai[["TenKhuon","TrongLuong"]]
-        st.dataframe(loc_trai)
+         loc_phai = loc_trai.rename(columns={
+            "TenKhuon": "Tên Khuôn trái",
+            "TrongLuong": "Trọng Lượng trái"
+        })
+        st.dataframe(loc_trai,,hide_index=True,use_container_width=True)
 with bangnhua_p:
     if  len(record) > 0:
         df = pd.DataFrame(record)
@@ -84,7 +88,11 @@ with bangnhua_p:
             (df["MaHang"]== ma_hang)
         ]
         loc_phai = loc_phai[["TenKhuon","TrongLuong"]]
-        st.dataframe(loc_phai)
+         loc_phai = loc_trai.rename(columns={
+            "TenKhuon": "Tên Khuôn trái",
+            "TrongLuong": "Trọng Lượng trái"
+        })
+        st.dataframe(loc_phai,,hide_index=True,use_container_width=True)
 
 # Đoạn code lấy thông tin từ Dataframe lên form nhập
 
