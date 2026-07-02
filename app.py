@@ -56,43 +56,41 @@ if st.button("💾 Lưu"):
 record = dta.sheet1.get_all_records()
 #col6, col7 = st.columns(2)
 
-bangnhua_t, bangnhua_p = st.columns(2)
-with bangnhua_t:
-    if  len(record) > 0:
-        df = pd.DataFrame(record)
-        loc_trai=df[
-            (df["Zone"]==zone)
-            &
-            (df["Ben"]== "T")
-            &
-            (df["May"]==may)
-            &
-            (df["MaHang"]== ma_hang)
+if  (len(record) > 0) & (trai_phai == "T"):
+    df = pd.DataFrame(record)
+    loc=df[
+        (df["Zone"]==zone)
+        &
+        (df["Ben"]== "T")
+        &
+        (df["May"]==may)
+        &
+        (df["MaHang"]== ma_hang)
+    ]
+    loc = loc[["TenKhuon","TrongLuong"]]
+    loc = loc.rename(columns={
+        "TenKhuon": "Tên khuôn trái",
+        "TrongLuong": "Số nhưa trái"
+    })
+else:
+    df = pd.DataFrame(record)
+    loc = df[
+        (df["Zone"] == zone)
+        &
+        (df["Ben"] == "P")
+        &
+        (df["May"] == may)
+        &
+        (df["MaHang"] == ma_hang)
         ]
-        loc_trai = loc_trai[["TenKhuon","TrongLuong"]]
-        loc_phai = loc_trai.rename(columns={
-            "TenKhuon": "Tên Khuôn trái",
-            "TrongLuong": "Trọng Lượng trái"
-        })
-        st.dataframe(loc_trai,hide_index=True,use_container_width=True)
-with bangnhua_p:
-    if  len(record) > 0:
-        df = pd.DataFrame(record)
-        loc_phai=df[
-            (df["Zone"]==zone)
-            &
-            (df["Ben"]== "P")
-            &
-            (df["May"]==may)
-            &
-            (df["MaHang"]== ma_hang)
-        ]
-        loc_phai = loc_phai[["TenKhuon","TrongLuong"]]
-        loc_phai = loc_phai.rename(columns={
-            "TenKhuon": "Tên Khuôn trái",
-            "TrongLuong": "Trọng Lượng trái"
-        })
-        st.dataframe(loc_phai,hide_index=True,use_container_width=True)
+    loc = loc[["TenKhuon", "TrongLuong"]]
+    loc = loc.rename(columns={
+        "TenKhuon": "Tên khuôn phải",
+        "TrongLuong": "Số nhưa phải"
+    })
+st.dataframe(loc,hide_index=True,use_container_width=True)
+#        df.columns = ["Tên khuôn trái", "Trọng lượng trái"]
+
 
 # Đoạn code lấy thông tin từ Dataframe lên form nhập
 
