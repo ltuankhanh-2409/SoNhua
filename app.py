@@ -39,9 +39,8 @@ if st.button("💾 Lưu"):
     st.toast("✅ Đã lưu thành công")
 record = dta.sheet1.get_all_records()
 
-record = dta.sheet1.get_all_values()
-df = pd.DataFrame(record[1:], columns=record[0])
-st.write(df.tail())
+st.write(record[-1]["TrongLuong"])
+st.write(type(record[-1]["TrongLuong"]))
 
 
 if  (len(record) > 0) & (trai_phai == "T"):
