@@ -38,6 +38,13 @@ if st.button("💾 Lưu"):
     #st.success("✅ Đã lưu thành công")
     st.toast("✅ Đã lưu thành công")
 record = dta.sheet1.get_all_records()
+
+st.write(record[-1])
+st.write(record[-1]["TrongLuong"])
+st.write(type(record[-1]["TrongLuong"]))
+
+
+
 if  (len(record) > 0) & (trai_phai == "T"):
     df = pd.DataFrame(record)
     loc=df[
