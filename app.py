@@ -41,6 +41,7 @@ record = dta.sheet1.get_all_records()
 
 st.write(record[-1]["TrongLuong"])
 st.write(type(record[-1]["TrongLuong"]))
+st.write(repr(record[-1]["TrongLuong"]))
 
 
 if  (len(record) > 0) & (trai_phai == "T"):
