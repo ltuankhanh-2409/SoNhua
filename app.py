@@ -33,10 +33,8 @@ with col4:
 with col5:
     trai_phai = st.selectbox(" 🤚🏻 Bên tái hay phải ✋🏻",["T","P"])
 with col6:
-# sửa code để test (dòng sau này sai)
-    trong_luong = st.text_input("📋 Nhập số nhựa")
-# code đúng khi chạy
-#    trong_luong = st.number_input("📋 Nhập số nhựa",min_value=1,max_value=900,value= None)
+
+    trong_luong = st.number_input("📋 Nhập số nhựa",min_value=1,max_value=900,value= None)
 
 # pre_data = f"{zone},{may},{ten_khuon},{trong_luong}"
 #pre_data = [zone,may,ten_khuon,trong_luong]
