@@ -37,10 +37,10 @@ if st.button("💾 Lưu"):
         dta.sheet1.append_row(row)
     #st.success("✅ Đã lưu thành công")
     st.toast("✅ Đã lưu thành công")
-#record = dta.sheet1.get_all_records()
+record = dta.sheet1.get_all_records()
 
-record = dta.sheet1.get_all_values()
-st.write(record[-1])
+#record = dta.sheet1.get_all_values()
+#st.write(record[-1])
 
 
 if trai_phai == "T":
