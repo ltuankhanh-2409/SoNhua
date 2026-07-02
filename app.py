@@ -37,19 +37,22 @@ if st.button("💾 Lưu"):
         dta.sheet1.append_row(row)
     #st.success("✅ Đã lưu thành công")
     st.toast("✅ Đã lưu thành công")
-record = dta.sheet1.get_all_records()
+#record = dta.sheet1.get_all_records()
 
-st.write(record[-1]["TrongLuong"])
-st.write(type(record[-1]["TrongLuong"]))
-st.write(repr(record[-1]["TrongLuong"]))
+record = dta.sheet1.get_all_values()
+st.write(record[-1])
 
 
-if  (len(record) > 0) & (trai_phai == "T"):
+if trai_phai == "T":
+    ben = "trái"
+else:
+    ben = "phải"
+if  len(record) > 0:
     df = pd.DataFrame(record)
-    loc=df[
+    loc = df[
         (df["Zone"]==zone)
         &
-        (df["Ben"]== "T")
+        (df["Ben"]== trai_phai)
         &
         (df["May"]==may)
         &
@@ -57,23 +60,7 @@ if  (len(record) > 0) & (trai_phai == "T"):
     ]
     loc = loc[["TenKhuon","TrongLuong"]]
     loc = loc.rename(columns={
-        "TenKhuon": "Tên khuôn trái",
-        "TrongLuong": "Số nhưa trái"
-    })
-else:
-    df = pd.DataFrame(record)
-    loc = df[
-        (df["Zone"] == zone)
-        &
-        (df["Ben"] == "P")
-        &
-        (df["May"] == may)
-        &
-        (df["MaHang"] == ma_hang)
-        ]
-    loc = loc[["TenKhuon", "TrongLuong"]]
-    loc = loc.rename(columns={
-        "TenKhuon": "Tên khuôn phải",
-        "TrongLuong": "Số nhưa phải"
+        "TenKhuon": f"Tên khuôn {ben}",
+        "TrongLuong": f"Số nhựa {ben}"
     })
 st.dataframe(loc,hide_index=True,use_container_width=True)
