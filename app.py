@@ -20,7 +20,7 @@ with col3:
     ma_hang = st.selectbox("🔎 Mã hàng",ds_mahang)
 col4, col5, col6 = st.columns(3)
 with col4:
-    ten_khuon = st.text_input("📋 Nhập tên Khuôn").uper()
+    ten_khuon = st.text_input("📋 Nhập tên Khuôn")
 with col5:
     trai_phai = st.selectbox(" 🤚🏻 Khuôn bên nào",["T","P"])
 with col6:
