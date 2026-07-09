@@ -2,5 +2,5 @@ streamlit
 gspread
 pandas
 google-auth
-openpyxl
 oauth2client
+streamlit-aggrid
