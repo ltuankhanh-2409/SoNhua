@@ -1,11 +1,14 @@
 import thu_vien as tv
 import streamlit as st
 import pandas as pd
-
-
+from st_aggrid import AgGrid, GridOptionsBuilder
+#-------------------
 
 dta=tv.connect_google("1ZGJ94U_I6iOb-ZInoZWTrHH4Ih7aA-ynlnrT8yR5yh8")
-#dta.sheet1.get_all_cells()
+
+#--------------------------
+
+
 st.set_page_config(page_title="📋 SỔ NHỰA",page_icon="🤣",layout="wide")
 st.title("📋 SỔ NHỰA")
 col1, col2, col3 = st.columns(3)
