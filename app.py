@@ -149,9 +149,9 @@ if selected is not None and not selected.empty:
     st.session_state["nhua"] = float(row["TrongLuong"])
 
 
-with st.expander("📋 Nếu sửa thì bạn chọn nút sửa. Nếu xóa thì chọn nút xóa"):
+with st.expander("✏️ Sửa / Xóa khuôn"):
 
-    #st.subheader("📋 Nếu sửa thì bạn chọn nút sửa. Nếu xóa thì chọn nút xóa")
+
 
     if trai_phai == "T":
         benkhuon = "Trái"
