@@ -126,7 +126,7 @@ gb.configure_column("TrongLuong", header_name=f"Số nhựa {ben}")
 
 # đóng gói những tùy chọn trên vào biến "tuy_chon_hien_thi"
 tuy_chon_hien_thi = gb.build()
-
+st.write(f"Số nhựa của {zone}, {may}, mã hàng {ma_hang}, {ben} ")
 bang = AgGrid(loc,gridOptions=tuy_chon_hien_thi)
 
 
