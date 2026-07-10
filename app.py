@@ -210,7 +210,7 @@ with st.expander("✏️ Sửa / Xóa khuôn"):
             record = dta.sheet1.get_all_records()
             df = pd.DataFrame(record)
             id_sua = st.session_state["id"]
-             if id_sua is None:
+            if id_sua is None:
                 st.toast("⚠️ Vui lòng chọn một dòng trên bảng số nhựa trước khi xóa.")
                 st.stop()
             dong = df[df["ID"] == id_sua].index[0]
