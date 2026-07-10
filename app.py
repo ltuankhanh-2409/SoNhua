@@ -128,31 +128,18 @@ gb.configure_column("TrongLuong", header_name=f"Số nhựa {ben}")
 tuy_chon_hien_thi = gb.build()
 st.write(f"Số nhựa: {zone} | {may} |  {ma_hang} | {ben}")
 bang = AgGrid(loc,gridOptions=tuy_chon_hien_thi)
-
-
-
 selected = bang.get("selected_rows")
 
 if selected is not None and not selected.empty:
     row = selected.iloc[0]
-
-
-
     st.session_state["id"] = row["ID"]
-
     st.session_state["zone"] = row["Zone"]
     st.session_state["may"] = row["May"]
     st.session_state["mahang"] = row["MaHang"]
     st.session_state["trai_phai"] = row["Ben"]
-
     st.session_state["tenkhuon"] = row["TenKhuon"]
     st.session_state["nhua"] = float(row["TrongLuong"])
-
-
 with st.expander("✏️ Sửa / Xóa khuôn"):
-
-
-
     if trai_phai == "T":
         benkhuon = "Trái"
     else:
@@ -180,9 +167,9 @@ with st.expander("✏️ Sửa / Xóa khuôn"):
     # thêm mục nhập mã hàng vào đây
     #---------------------
 
-        nut_sua = st.button("✏️ Sửa", use_container_width=True)
+        #nut_sua = st.button("✏️ Sửa", use_container_width=True)
 
-        if nut_sua:
+        if st.button("✏️ Sửa", use_container_width=True):
             record = dta.sheet1.get_all_records()
             df = pd.DataFrame(record)
             id_sua = st.session_state["id"]
