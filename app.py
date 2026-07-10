@@ -39,6 +39,48 @@ if "nhua" not in st.session_state:
 # Các đoạn code còn lại...
 
 st.title("📋 SỔ NHỰA")
+def luu_nhua():
+    record = dta.sheet1.get_all_records()
+    df = pd.DataFrame(record)
+    loc = df[
+        (df["Zone"] == zone) &
+        (df["May"] == may) &
+        (df["MaHang"] == ma_hang) &
+        (df["Ben"] == trai_phai) &
+        (df["TenKhuon"] == ten_khuon)
+        ]
+    if ten_khuon:
+        st.toast("⚠️ Bạn chưa nhập tên khuôn.")
+        return
+    if trong_luong is None:
+        st.toast("⚠️ Bạn chưa nhập số nhựa.")
+        return
+    if not loc.empty:
+        st.toast("⚠️ Khuôn này bạn đã lưu rồi")
+        return
+    if df.empty:
+        new_id = 1
+    else:
+        max_id = df["ID"].max()
+        new_id = int(max_id) + 1
+
+    if trai_phai == "T":
+        ben = "⬅️ Trái"
+    else:
+        ben = "⬅️ Phải"
+
+    if len(record) == 0:
+        tieu_de_cot = ["ID", "Zone", "May", "MaHang", "TenKhuon", "Ben", "TrongLuong"]
+        dta.sheet1.append_row(tieu_de_cot)
+        row = [new_id, zone, may, ma_hang, ten_khuon, trai_phai, trong_luong]
+        dta.sheet1.append_row(row)
+    else:
+        row = [new_id, zone, may, ma_hang, ten_khuon, trai_phai, trong_luong]
+        dta.sheet1.append_row(row)
+    # st.success("✅ Đã lưu thành công")
+    st.toast(f"✅ Đã lưu thành công khuôn {ten_khuon} {ben}")
+
+#______________________________________________
 with st.expander("➕ Chọn khuôn cần tìm"):
 
     col1, col2, col3, col4, col5, col6 = st.columns(6)
@@ -61,35 +103,7 @@ with st.expander("➕ Chọn khuôn cần tìm"):
         trong_luong = st.number_input("📋 Nhập số nhựa", min_value=1.0, max_value=900.0, value=None)
 
     if st.button("💾 Lưu"):
-        record = dta.sheet1.get_all_records()
-        df = pd.DataFrame(record)
-
-        if df.empty:
-            new_id = 1
-        else:
-            max_id = df["ID"].max()
-            new_id = int(max_id) + 1
-
-        if trai_phai == "T":
-            ben = "bên trái"
-        else:
-            ben = "bên phải"
-
-       # st.write(new_id)
-
-
-        if len(record) == 0:
-            tieu_de_cot = ["ID","Zone","May","MaHang","TenKhuon","Ben","TrongLuong"]
-            dta.sheet1.append_row(tieu_de_cot)
-            row = [new_id,zone, may ,ma_hang, ten_khuon, trai_phai, trong_luong]
-            dta.sheet1.append_row(row)
-        else:
-            row = [new_id,zone, may ,ma_hang, ten_khuon, trai_phai, trong_luong]
-            dta.sheet1.append_row(row)
-        #st.success("✅ Đã lưu thành công")
-        st.toast(f"✅ Đã lưu thành công khuôn {ten_khuon} {ben}")
-        record = dta.sheet1.get_all_records()
-        df = pd.DataFrame(record)
+        luu_mhua()
 
 # Tạo và gán dữ liệu vào AgGrid hiện dữ liệu lên bảng
 record = dta.sheet1.get_all_records()
