@@ -53,7 +53,7 @@ def luu_nhua():
         st.toast(f"⚠️ Bạn chưa nhập tên khuôn.")
         return
     if trong_luong is None:
-        st.toast("⚠️ Bạn chưa nhập số nhựa.")
+        st.toast(f"⚠️ Khuôn {ten_khuon} bạn chưa nhập số nhựa.")
         return
     if not loc.empty:
         st.toast(f"⚠️ Khuôn {ten_khuon} này bạn đã lưu rồi")
