@@ -153,7 +153,7 @@ def sua_so_nhua():
     id_sua = st.session_state["id"]
 
     if id_sua is None:
-        st.toast("⚠️ Vui lòng chọn một dòng trên bảng số nhựa trước khi sửa.")
+        st.toast("⚠️ Vui lòng chọn một dòng cần sửa trên bảng số nhựa trước khi sửa.")
         #st.stop()
         return
     elif sua_nhua is None:
