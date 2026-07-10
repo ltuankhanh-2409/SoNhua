@@ -50,7 +50,7 @@ def luu_nhua():
         (df["TenKhuon"] == ten_khuon)
         ]
     if not ten_khuon:
-        st.toast(f"⚠️ Bạn chưa nhập tên khuôn {ten_khuom} đã có rồi.")
+        st.toast(f"⚠️ Bạn chưa nhập tên khuôn {ten_khuon} đã có rồi.")
         return
     if trong_luong is None:
         st.toast("⚠️ Bạn chưa nhập số nhựa.")
