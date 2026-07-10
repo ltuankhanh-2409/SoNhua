@@ -50,13 +50,13 @@ def luu_nhua():
         (df["TenKhuon"] == ten_khuon)
         ]
     if not ten_khuon:
-        st.toast(f"⚠️ Bạn chưa nhập tên khuôn {ten_khuon} đã có rồi.")
+        st.toast(f"⚠️ Bạn chưa nhập tên khuôn.")
         return
     if trong_luong is None:
         st.toast("⚠️ Bạn chưa nhập số nhựa.")
         return
     if not loc.empty:
-        st.toast("⚠️ Khuôn này bạn đã lưu rồi")
+        st.toast(f"⚠️ Khuôn {ten_khuon} này bạn đã lưu rồi")
         return
     if df.empty:
         new_id = 1
