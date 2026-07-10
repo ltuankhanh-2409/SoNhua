@@ -89,7 +89,7 @@ with st.expander("➕ Chọn khuôn cần tìm"):
                             index=5)
     with col2:
         # may = st.text_input("🔎 Nhập máy vào")
-        may = st.selectbox("🔎 Máy nào", ["Máy 1", "Máy 2", "Máy 3", "Máy 4", "Máy 5", "Máy 6"])
+        may = st.selectbox("🔎 Máy nào", ["Máy 1", "Máy 2", "Máy 3", "Máy 4", "Máy 5", "Máy 6"],index=4)
     with col3:
         ws_mahang = dta.worksheet("Mahang")
         ds_mahang = ws_mahang.col_values(1)[1:]
