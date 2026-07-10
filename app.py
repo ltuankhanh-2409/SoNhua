@@ -168,7 +168,7 @@ if selected is not None and not selected.empty:
     st.session_state["mahang"] = row["MaHang"]
     st.session_state["trai_phai"] = row["Ben"]
     st.session_state["tenkhuon"] = row["TenKhuon"]
-    st.session_state["nhua"] = float(row["TrongLuong"])
+    st.session_state["nhua"] = row["TrongLuong"]
 with st.expander("✏️ Sửa / Xóa khuôn"):
     if trai_phai == "T":
         benkhuon = "Trái"
