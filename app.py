@@ -49,7 +49,7 @@ def luu_nhua():
         (df["Ben"] == trai_phai) &
         (df["TenKhuon"] == ten_khuon)
         ]
-    if ten_khuon:
+    if not ten_khuon:
         st.toast("⚠️ Bạn chưa nhập tên khuôn.")
         return
     if trong_luong is None:
