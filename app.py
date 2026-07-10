@@ -89,7 +89,7 @@ with st.expander("➕ Chọn khuôn cần tìm"):
                             index=5)
     with col2:
         # may = st.text_input("🔎 Nhập máy vào")
-        may = st.selectbox("🔎 Máy nào", ["Máy 1", "Máy 2", "Máy 3", "Máy 4", "Máy 5", "Máy 6"],index=4)
+        may = st.selectbox("🔎 Máy nào", ["Máy 1", "Máy 2", "Máy 3", "Máy 4", "Máy 5", "Máy 6"])
     with col3:
         ws_mahang = dta.worksheet("Mahang")
         ds_mahang = ws_mahang.col_values(1)[1:]
@@ -101,9 +101,11 @@ with st.expander("➕ Chọn khuôn cần tìm"):
 
     with col6:
         trong_luong = st.number_input("📋 Nhập số nhựa", min_value=1.0, max_value=900.0, value=None)
+# Hàm lưu nhựa________________________________
 
     if st.button("💾 Lưu"):
-        luu_mhua()
+        luu_nhua()
+
 
 # Tạo và gán dữ liệu vào AgGrid hiện dữ liệu lên bảng
 record = dta.sheet1.get_all_records()
