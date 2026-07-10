@@ -130,6 +130,32 @@ st.write(f"Số nhựa: {zone} | {may} |  {ma_hang} | {ben}")
 bang = AgGrid(loc,gridOptions=tuy_chon_hien_thi)
 selected = bang.get("selected_rows")
 
+# hàm sửa số nhựa__________________________
+def sua_so_nhua():
+    record = dta.sheet1.get_all_records()
+    df = pd.DataFrame(record)
+    id_sua = st.session_state["id"]
+
+    if id_sua is None:
+        st.toast("⚠️ Vui lòng chọn một dòng trên bảng số nhựa trước khi sửa.")
+        #st.stop()
+        return
+    elif sua_nhua is None:
+        st.toast("⚠️ Vui lòng nhập số nhựa cần sửa.")
+        #st.stop()
+        return
+    dong = df[df["ID"] == id_sua].index[0]
+    dong_sheet = dong + 2
+    dta.sheet1.update_cell(dong_sheet, 7, sua_nhua)
+    st.toast(
+        f"✅ Bạn vừa sửa lại số nhựa khuôn {st.session_state['tenkhuon']} "
+        f"bên {benkhuon} "
+        f"mã {st.session_state['mahang']}, "
+        f"{st.session_state['may']}, "
+        f"{st.session_state['zone']}"
+    )
+#--------------------------------
+
 if selected is not None and not selected.empty:
     row = selected.iloc[0]
     st.session_state["id"] = row["ID"]
@@ -170,27 +196,7 @@ with st.expander("✏️ Sửa / Xóa khuôn"):
         #nut_sua = st.button("✏️ Sửa", use_container_width=True)
 
         if st.button("✏️ Sửa", use_container_width=True):
-            record = dta.sheet1.get_all_records()
-            df = pd.DataFrame(record)
-            id_sua = st.session_state["id"]
-            if id_sua is None:
-                st.toast("⚠️ Vui lòng chọn một dòng trên bảng số nhựa trước khi sửa.")
-                st.stop()
-            elif sua_nhua is None:
-                st.toast("⚠️ Vui lòng nhập số nhựa cần sửa.")
-                st.stop()
-            dong = df[df["ID"] == id_sua].index[0]
-            dong_sheet = dong + 2
-            dta.sheet1.update_cell(dong_sheet, 7, sua_nhua)
-    #with col3:
-
-            st.toast(
-                f"✅ Bạn vừa sửa lại số nhựa khuôn {st.session_state['tenkhuon']} "
-                f"bên {benkhuon} "
-                f"mã {st.session_state['mahang']}, "
-                f"{st.session_state['may']}, "
-                f"{st.session_state['zone']}"
-            )
+            sua_so_nhua()
     with col2:
         nut_xoa = st.button("🗑 Xóa", use_container_width=True)
         if nut_xoa:
