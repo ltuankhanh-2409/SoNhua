@@ -186,7 +186,12 @@ with st.expander("✏️ Sửa / Xóa khuôn"):
             record = dta.sheet1.get_all_records()
             df = pd.DataFrame(record)
             id_sua = st.session_state["id"]
-
+             if id_sua is None:
+                st.toast("⚠️ Vui lòng chọn một dòng trên bảng số nhựa trước khi sửa.")
+                st.stop()
+            elif sua_nhua is None:
+                st.toast("⚠️ Vui lòng nhập số nhựa cần sửa.")
+                st.stop()
             dong = df[df["ID"] == id_sua].index[0]
             dong_sheet = dong + 2
             dta.sheet1.update_cell(dong_sheet, 7, sua_nhua)
@@ -205,7 +210,9 @@ with st.expander("✏️ Sửa / Xóa khuôn"):
             record = dta.sheet1.get_all_records()
             df = pd.DataFrame(record)
             id_sua = st.session_state["id"]
-
+             if id_sua is None:
+                st.toast("⚠️ Vui lòng chọn một dòng trên bảng số nhựa trước khi xóa.")
+                st.stop()
             dong = df[df["ID"] == id_sua].index[0]
             dong_sheet = dong + 2
             dta.sheet1.delete_rows(dong_sheet)
