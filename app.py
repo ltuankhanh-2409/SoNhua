@@ -148,8 +148,8 @@ selected = bang.get("selected_rows")
 
 # hàm sửa số nhựa__________________________
 def sua_so_nhua():
-    record = dta.sheet1.get_all_records()
-    df = pd.DataFrame(record)
+    #record = dta.sheet1.get_all_records()
+    #df = pd.DataFrame(record)
     id_sua = st.session_state["id"]
 
     if id_sua is None:
@@ -177,8 +177,8 @@ def sua_so_nhua():
 #--------------------------------
 # Hàm xóa nhựa_____________________
 def xoa_so_nhua():
-    record = dta.sheet1.get_all_records()
-    df = pd.DataFrame(record)
+    #record = dta.sheet1.get_all_records()
+    #df = pd.DataFrame(record)
     id_sua = st.session_state["id"]
     if id_sua is None:
         st.toast("⚠️ Vui lòng chọn một dòng trên bảng số nhựa trước khi xóa.")
