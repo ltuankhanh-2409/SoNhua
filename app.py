@@ -175,30 +175,51 @@ def sua_so_nhua():
         f"{st.session_state['zone']}"
     )
 #--------------------------------
-# Hàm xóa nhựa_____________________
-def xoa_so_nhua():
-    #record = dta.sheet1.get_all_records()
-    #df = pd.DataFrame(record)
-    id_sua = st.session_state["id"]
-    if id_sua is None:
-        st.toast("⚠️ Vui lòng chọn một dòng trên bảng số nhựa trước khi xóa.")
-        return
-    loc = df[df["ID"] == id_sua]
-    if loc.empty:
-        st.toast("⚠️ Dữ liệu này đã bị xóa hoặc thay đổi. Vui lòng tải lại danh sách.")
-        return
-    dong = df[df["ID"] == id_sua].index[0]
-    dong_sheet = dong + 2
-    dta.sheet1.delete_rows(dong_sheet)
-    st.toast(
-        f"✅ Bạn đã xóa {st.session_state['tenkhuon']} "
-        f"bên {benkhuon} "
-        f"mã {st.session_state['mahang']}, "
-        f"{st.session_state['may']}, "
-        f"{st.session_state['zone']}"
-    )
-#________________________________________
 
+#________________________________________
+# Hàm xóa số nhựa
+@st.dialog("⚠️ Xác nhận xóa")
+def dialog_xoa():
+    id_sua = st.session_state["id"]
+    loc = df[df["ID"] == id_sua]
+    if not loc.empty:
+        st.write(
+            f"➕ Bạn có chắc xóa khuôn {st.session_state['tenkhuon']} "
+            f"bên {benkhuon} "
+            f"mã {st.session_state['mahang']}, "
+            f"{st.session_state['may']}, "
+            f"{st.session_state['zone']} không? Nếu có bấm ✅ Đồng ý. Nếu không bấm ❌ Hủy"
+        )
+    else:
+        st.write("Bạn chưa chọn khuôn từ bản phía trên để xóa")
+        return
+
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        if st.button("✅ Đồng ý", type="primary", use_container_width=True):
+            id_sua = st.session_state["id"]
+            if id_sua is None:
+                st.toast("⚠️ Vui lòng chọn một dòng trên bảng số nhựa trước khi xóa.")
+                return
+            dong = df[df["ID"] == id_sua].index[0]
+            dong_sheet = dong + 2
+            dta.sheet1.delete_rows(dong_sheet)
+            st.toast(
+                f"✅ Bạn đã xóa {st.session_state['tenkhuon']} "
+                f"bên {benkhuon} "
+                f"mã {st.session_state['mahang']}, "
+                f"{st.session_state['may']}, "
+                f"{st.session_state['zone']}"
+            )
+            #xoa_so_nhua()
+            st.rerun()
+
+    with col2:
+        if st.button("❌ Hủy", use_container_width=True):
+            st.rerun()
+# kết thúc hàm xóa số nhựa
 if selected is not None and not selected.empty:
     row = selected.iloc[0]
     st.session_state["id"] = row["ID"]
@@ -243,6 +264,6 @@ with st.expander("✏️ Sửa / Xóa khuôn"):
     with col2:
        
         if st.button("🗑 Xóa", use_container_width=True):
-            xoa_so_nhua()
+            dialog_xoa()
 
 
