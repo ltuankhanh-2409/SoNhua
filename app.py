@@ -160,7 +160,7 @@ def sua_so_nhua():
         st.toast("⚠️ Vui lòng nhập số nhựa cần sửa.")
         #st.stop()
         return
-    loc = df[df["ID"] == id_sua]
+    #loc = df[df["ID"] == id_sua]
     if loc.empty:
         st.toast("⚠️ Dữ liệu này đã bị xóa hoặc thay đổi. Vui lòng tải lại danh sách.")
         return
