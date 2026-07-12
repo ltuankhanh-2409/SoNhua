@@ -184,10 +184,10 @@ def dialog_xoa():
     loc = df[df["ID"] == id_sua]
     if not loc.empty:
         st.write(
-            f"➕ Bạn có chắc xóa khuôn {st.session_state['tenkhuon']} "
+            f"➕ Bạn có chắc xóa khuôn {st.session_state['tenkhuon']} | "
             f"bên {benkhuon} "
-            f"mã {st.session_state['mahang']}, "
-            f"{st.session_state['may']}, "
+            f"| {st.session_state['mahang']}| "
+            f"{st.session_state['may']}| "
             f"{st.session_state['zone']} không? Nếu có bấm ✅ Đồng ý. Nếu không bấm ❌ Hủy"
         )
     else:
