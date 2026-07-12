@@ -40,8 +40,8 @@ if "nhua" not in st.session_state:
 
 st.title("📋 SỔ NHỰA")
 def luu_nhua():
-    #record = dta.sheet1.get_all_records()
-    #df = pd.DataFrame(record)
+    record = dta.sheet1.get_all_records()
+    df = pd.DataFrame(record)
     loc = df[
         (df["Zone"] == zone) &
         (df["May"] == may) &
